@@ -15,13 +15,13 @@ public class GerenciadorDeSessao {
 		// TODO Auto-generated constructor stub
 	}
 
-					public boolean cabe(Sessao novaSessao) {
-								
-							
-							return listaDeSessoes.stream().noneMatch(x -> conflita(x,novaSessao));
-						
-					}
-	
+	public boolean cabe(Sessao novaSessao) {
+				
+			
+			return listaDeSessoes.stream().noneMatch(x -> conflita(x,novaSessao));
+		
+	}
+
 
 	private boolean conflita(Sessao antigaSessao, Sessao novaSessao) {
 		LocalDateTime inicioSessaoAntiga = antigaSessao.getHorario().atDate(LocalDate.now());
