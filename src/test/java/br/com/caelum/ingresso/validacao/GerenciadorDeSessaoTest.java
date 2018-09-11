@@ -1,5 +1,6 @@
 package br.com.caelum.ingresso.validacao;
 
+import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -24,8 +25,8 @@ public class GerenciadorDeSessaoTest {
 	
 	@Before
 	public void preparaSessoes(){
-		this.rogueOne = new Filme ("Rogue One", Duration.ofMinutes(120), "SCI-FI");
-		this.Sala3D = new Sala ("Legal");
+		this.rogueOne = new Filme ("Rogue One", Duration.ofMinutes(120), "SCI-FI", BigDecimal.ONE);
+		this.Sala3D = new Sala ("Legal", BigDecimal.TEN);
 		
 		this.sessaoDasDez = new Sessao(LocalTime.parse("10:00:00"), rogueOne, Sala3D);
 		this.sessaoDasTreze = new Sessao(LocalTime.parse("13:00:00"), rogueOne, Sala3D);
@@ -36,8 +37,8 @@ public class GerenciadorDeSessaoTest {
 	@Test
 	public void deveConflitarQuandoOInicioDaAtualEstaDentroDaAntiga() {
 		// Setup
-		Filme filme = new Filme("Matriz", Duration.ofMinutes(180), "Ação");
-		Sala sala = new Sala("Legal");
+		Filme filme = new Filme("Matriz", Duration.ofMinutes(180), "Ação", BigDecimal.ONE);
+		Sala sala = new Sala("Legal", BigDecimal.TEN);
 		Sessao novaSessao = new Sessao(LocalTime.parse("15:00"), filme, sala);
 		Sessao sessaoAntiga = new Sessao(LocalTime.parse("14:00"), filme, sala);
 		
