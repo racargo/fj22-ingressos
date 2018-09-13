@@ -40,7 +40,7 @@ public class FilmeController {
     	Filme filme = filmeDao.findOne(id);
     	List<Sessao> sessoes = sessaoDao.buscaSessoesDoFilme(filme);
     	
-    	Optional<DetalhesDoFilme> detalhesDoFilme = client.request(filme);
+    	Optional<DetalhesDoFilme> detalhesDoFilme = client.request(filme, DetalhesDoFilme.class);
     	
     	modelandview.addObject("sessoes", sessoes);
     	modelandview.addObject("detalhes", detalhesDoFilme.orElse(new DetalhesDoFilme()));
@@ -107,5 +107,6 @@ public class FilmeController {
     public void delete(@PathVariable("id") Integer id){
         filmeDao.delete(id);
     }
+   
 
 }
